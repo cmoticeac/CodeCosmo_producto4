@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Image, ScrollView } from 'react-native';
 import Multimedia from './multimedia'; // Importamos el componente Multimedia
-
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 const Detalle = ({ jugador, onBack }) => {
   const [showMultimedia, setShowMultimedia] = useState(false); // Estado para controlar si se muestra Multimedia
 
@@ -18,25 +18,26 @@ const Detalle = ({ jugador, onBack }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Detalles del Jugador</Text>
-      <Image
-        source={{ uri: jugador.img1 }} // Usamos jugador.img1 para acceder a la URL de la imagen
-        style={styles.image} // Estilo para la imagen
-      />
-      <Text>Nombre: {jugador.nombre}</Text>
-      <Text>Apellido: {jugador.apellido}</Text>
-      <Text>Posición: {jugador.posicion}</Text>
-      <Text>Edad: {jugador.edad}</Text>
-      <Text>Sexo: {jugador.sexo}</Text>
-      <Text>Altura: {jugador.altura}</Text>
-      <Text>Partidos: {jugador.partidos}</Text>
-      <Text>
-        {'\n'}
-      </Text>
-      <Button title="Volver a la lista" onPress={onBack} />
-      <Text>
-        {'\n'}
-      </Text>
+       <SafeAreaProvider>
+          <SafeAreaView style={styles.container}>
+              <Text style={styles.title}>Detalles del Jugador</Text>
+              <Image
+                source={{ uri: jugador.img1 }} // Usamos jugador.img1 para acceder a la URL de la imagen
+                style={styles.image}/> // Estilo para la imagen
+
+
+              <Text style={styles.name}> Nombre  {jugador.nombre}</Text>
+              <Text style={styles.name}> Apellido {jugador.apellido}</Text>
+              <Text style={styles.name}> Posición {jugador.posicion}</Text>
+              <Text style={styles.name}> Edad  {jugador.edad}</Text>
+              <Text style={styles.name}> Sexo  {jugador.sexo}</Text>
+              <Text style={styles.name}> Altura  {jugador.altura}</Text>
+              <Text style={styles.name}> Partidos {jugador.partidos}</Text>
+
+              <Button title='Volver a la lista' onPress={onBack} />
+
+          </SafeAreaView>
+       </SafeAreaProvider>
       <Button title="Ir a Multimedia" onPress={handleGoToMultimedia} /> {/* Botón para ir a Multimedia */}
     </ScrollView>
   );
