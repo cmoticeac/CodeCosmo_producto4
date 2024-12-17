@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "producto4",
-    "slug": "producto4",
-    "version": "1.0.1",
+    "name": "CodeCosmo_producto4",
+    "slug": "CodeCosmo_producto4",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -12,10 +12,17 @@
       "supportsTablet": true
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
+        "googleServicesFile": "./google-services.json",
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "android": {
+        "googleServicesFile": "./google-services.json",
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/images/adaptive-icon.png",
+          "backgroundColor": "#ffffff"
+        }
       }
     },
     "web": {
@@ -33,9 +40,7 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ],
-      "expo-camera"
-        
+      ]
     ],
     "experiments": {
       "typedRoutes": true
