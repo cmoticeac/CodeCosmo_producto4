@@ -41,12 +41,19 @@ export default   Mystyles = StyleSheet.create({
       fontSize: 18,
       fontWeight: '600',
     },
-
+/*
     video: {
       width: '100%',
       height: 200,
       marginTop: 10,
     },
+    */
+     video: {
+          width: '100%',    // Ancho del video al 100% del contenedor
+          height: 400,      // Ajustamos la altura a 400 para un video grande
+          marginTop: 10,    // Espacio superior entre el título y el video
+          marginBottom: 20, // Espacio inferior para separar de otros contenidos
+        },
 
  containerVideo: {
     flex: 1,

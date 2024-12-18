@@ -6,8 +6,12 @@ import styles from './tab_styles/styles';
 
 export default function Index() {
 
-  return (
-          <Listado />
 
+  const handleBack = () => {
+      console.log('onBack triggered');
+    };
+
+  return (
+        <Listado onBack={handleBack} />
   );
 }
