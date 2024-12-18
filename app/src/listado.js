@@ -1,8 +1,10 @@
 import React from 'react';
-import { FlatList, View, Text, StyleSheet, Button, Image, ActivityIndicator } from 'react-native';
+import { FlatList, View, Text,  Button, Image, ActivityIndicator } from 'react-native';
 import { database, ref, onValue } from './firebase/firebase.js'; // Aquí importamos ref y onValue
 import Detalle from './detalle'; // Asegúrate de importar el componente Detalle
-import Mensajes from './firebase/mensajes.js';
+import Mensajes from '../src/firebase/mensajes.js';
+import Mystyles from './mystyles.js';
+
 // Mensajes();  //mensajes token
 class Listado extends React.Component {
   constructor(props) {
@@ -82,12 +84,12 @@ class Listado extends React.Component {
   };
 
   renderItem = ({ item }) => (
-    <View style={styles.item}>
+    <View style={Mystyles.item}>
       <Image
         source={{ uri: item.img1 }} // Suponiendo que `item.img1` contiene la URL de la imagen
-        style={styles.image}
+        style={Mystyles.image}
       />
-      <Text style={styles.name}>Nombre: {item.nombre}</Text>
+      <Text style={Mystyles.name}>Nombre: {item.nombre}</Text>
       <Text>Apellido: {item.apellido}</Text>
       <Text>Posición: {item.posicion}</Text>
       <Button title="Ver Detalles Jugador" onPress={() => this.handlePress(item)} />
@@ -98,8 +100,8 @@ class Listado extends React.Component {
     const { selectedJugador, jugadores, loading } = this.state;
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Lista de Jugadores</Text>
+      <View style={Mystyles.container}>
+        <Text style={Mystyles.title}>Lista de Jugadores</Text>
 
         {selectedJugador ? (
           <Detalle jugador={selectedJugador} onBack={() => this.setState({ selectedJugador: null })} />
@@ -117,40 +119,5 @@ class Listado extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#B9E5E8',
-  },
-  title: {
-    fontSize: 24,
-    color: '#DFF2EB',
-    fontWeight: 'bold',
-    marginBottom: 10,
-    textAlign: 'center',
-    backgroundColor: '#7AB2D3',
-  },
-  item: {
-    padding: 15,
-    borderBottomWidth: 10,
-    borderBottomColor: '#B9E5E8',
-    backgroundColor: '#DFF2EB',
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  image: {
-    width: 200, // Ancho de la imagen
-    height: 200, // Alto de la imagen
-    alignContent: 'center',
-    textAlign: 'center',
-    resizeMode: 'cover', // Ajusta la imagen a un formato adecuado
-    marginTop: 10, // Espacio entre el texto y la imagen
-    marginBottom: 10,
-  },
-});
 
 export default Listado;

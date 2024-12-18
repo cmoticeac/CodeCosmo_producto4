@@ -11,6 +11,7 @@
     "ios": {
       "supportsTablet": true
     },
+    "platforms": ["android", "ios", "web"],
     "android": {
       "adaptiveIcon": {
         "googleServicesFile": "./google-services.json",
@@ -28,7 +29,9 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "use": "minimal-ui",
+      "vapidPublicKey": "BMnQLNXZ3i-Y-2QlJVdKSlQHF9yMCTF1uHAB9PbKlw--s_GUChAYpKasx-5A7x_Zu-meyYv8iboc8QSFqhJoTGA"
     },
     "plugins": [
       "expo-router",

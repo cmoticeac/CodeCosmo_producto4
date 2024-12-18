@@ -15,10 +15,9 @@ const firebaseConfig = {
  
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-console.log("linea 22 inicializa bd");
+
 // Inicializa Realtime Database
 const database = getDatabase(app);
-console.log("linea 21 getDatabase");
 export { database, ref, set, get, child, onValue };
 
 //  export default firebaseConfig;
