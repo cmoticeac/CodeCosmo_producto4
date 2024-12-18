@@ -41,6 +41,15 @@ export default function TabLayout() {
         }}
       />
 
+       <Tabs.Screen
+              name="delante"
+              options={{
+                title: 'Delante', tabBarIcon: ({ color, focused }) => (
+                  <Ionicons name={focused ? 'arrow-foward' : 'arrow-foward-outline'} color={color} size={24} />
+                ),
+              }}
+            />
+
     </Tabs>
 
   );

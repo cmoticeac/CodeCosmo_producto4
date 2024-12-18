@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet, Button, Image, ActivityIndicator } from 'react-native';
-import { database, ref, onValue } from '../src/firebase'; // Aquí importamos ref y onValue
+import { database, ref, onValue } from './firebase/firebase.js'; // Aquí importamos ref y onValue
 import Detalle from './detalle'; // Asegúrate de importar el componente Detalle
-
+import Mensajes from './firebase/mensajes.js';
+// Mensajes();  //mensajes token
 class Listado extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +23,7 @@ class Listado extends React.Component {
   // Cargar los jugadores de la base de datos
   loadJugadores = () => {
     const jugadoresRef = ref(database, '/jugadores');
+
 
     this.setState({ loading: true });
 
