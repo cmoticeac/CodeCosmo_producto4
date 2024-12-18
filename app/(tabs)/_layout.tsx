@@ -18,6 +18,7 @@ export default function TabLayout() {
       }}>
 
       <Tabs.Screen
+
         name="index" options={{  title: 'Home', tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
           ), }} />
@@ -34,6 +35,10 @@ export default function TabLayout() {
             <Ionicons name={focused ? 'arrow-forward' : 'arrow-forward-outline'} color={color} size={24} />
          ),}}/>
 
+        <Tabs.Screen  name="insertar" options={{
+                title: 'Insert', tabBarIcon: ({ color, focused }) => (
+                   <Ionicons name={focused ? 'arrow-forward' : 'arrow-forward-outline'} color={color} size={24} />
+                ),}}/>
     </Tabs>
 
   );

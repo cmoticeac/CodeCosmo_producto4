@@ -11,7 +11,9 @@ export default function Index() {
       console.log('onBack triggered');
     };
 
+// esto debe posicionarse en el 1º elemento
   return (
+
         <Listado onBack={handleBack} />
   );
 }

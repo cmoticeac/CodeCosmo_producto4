@@ -79,12 +79,17 @@ class Listado extends React.Component {
     );
   };
 
+// inicialmente se puede controlar token al clic para list o update...
   handlePress = (item) => {
     this.setState({ selectedJugador: item });
   };
 
   renderItem = ({ item }) => (
+
+
+
     <View style={Mystyles.item}>
+
       <Image
         source={{ uri: item.img1 }} // Suponiendo que `item.img1` contiene la URL de la imagen
         style={Mystyles.image}
@@ -93,6 +98,8 @@ class Listado extends React.Component {
       <Text>Apellido: {item.apellido}</Text>
       <Text>Posición: {item.posicion}</Text>
       <Button title="Ver Detalles Jugador" onPress={() => this.handlePress(item)} />
+       <Text>{'\n'}</Text>
+      <Button title="Update "  />
     </View>
   );
 
