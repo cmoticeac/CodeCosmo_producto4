@@ -25,8 +25,9 @@ const Detalle = ({ jugador, onBack }) => {
           <SafeAreaView style={Mystyles.container}>
           <View>
               <Text style={Mystyles.title}>Detalles del Jugador</Text>
-              <Image source={{ uri: jugador.img1 }}  /> // Usamos jugador.img1 para acceder a la URL de la imagen
-
+              <Image source={{ uri: jugador.img1 }}  
+              style={Mystyles.image}
+              />
               <Text style={Mystyles.name}>Nombre: {jugador.nombre}</Text>
               <Text style={Mystyles.name}>Apellido: {jugador.apellido}</Text>
               <Text style={Mystyles.name}>Posición: {jugador.posicion}</Text>
