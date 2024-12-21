@@ -23,10 +23,6 @@ export default   Mystyles = StyleSheet.create({
     borderBottomColor: '#B9E5E8',
     backgroundColor: '#DFF2EB',
   },
-  name: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
   image: {
     width: 200,
     height: 200,

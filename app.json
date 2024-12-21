@@ -11,7 +11,11 @@
     "ios": {
       "supportsTablet": true
     },
-    "platforms": ["android", "ios", "web"],
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
     "android": {
       "adaptiveIcon": {
         "googleServicesFile": "./google-services.json",
@@ -43,7 +47,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

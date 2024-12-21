@@ -1,45 +1,71 @@
-import { Tabs } from 'expo-router';
-import {  Button } from 'react-native';
+import { Tabs, Slot } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
-//import Atras_Screen from './atras';
-import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from '@react-navigation/native';
-import styles from './tab_styles/styles';
 
 export default function TabLayout() {
-
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#ffd33d',
-        headerStyle: { backgroundColor: '#25292e'    },
-        headerShadowVisible: false, headerTintColor: '#fff',
-        tabBarStyle: {  backgroundColor: '#25292e'    }
-      }}>
-
+        headerStyle: { backgroundColor: '#25292e' },
+        headerShadowVisible: false,
+        headerTintColor: '#fff',
+        tabBarStyle: { backgroundColor: '#25292e' },
+      }}
+    >
       <Tabs.Screen
-
-        name="index" options={{  title: 'Home', tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
-          ), }} />
-
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+            <Ionicons
+              name={focused ? 'home-sharp' : 'home-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="atras"
         options={{
-          title: 'Atrás', tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'arrow-back' : 'arrow-back-outline'} color={color} size={24} />
-          ), }} />
-
-       <Tabs.Screen  name="delante" options={{
-         title: 'Delante', tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'arrow-forward' : 'arrow-forward-outline'} color={color} size={24} />
-         ),}}/>
-
-        <Tabs.Screen  name="insertar" options={{
-                title: 'Insert', tabBarIcon: ({ color, focused }) => (
-                   <Ionicons name={focused ? 'arrow-forward' : 'arrow-forward-outline'} color={color} size={24} />
-                ),}}/>
+          title: 'Atrás',
+          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+            <Ionicons
+              name={focused ? 'arrow-back' : 'arrow-back-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="delante"
+        options={{
+          title: 'Delante',
+          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+            <Ionicons
+              name={focused ? 'arrow-forward' : 'arrow-forward-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="insertar"
+        options={{
+          title: 'Insertar',
+          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+            <Ionicons
+              name={focused ? 'add-circle' : 'add-circle-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      {/* Renderizamos las rutas internas de cada pestaña */}
+      <Slot />
     </Tabs>
-
   );
 }
