@@ -1,68 +1,89 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import React from 'react';
+import { StyleSheet, Image, Text, View, Linking } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import styles from './tab_styles/styles';
 
+const TabTwoScreen: React.FC = () => {
+  const handlePress = () => {
+    Linking.openURL('https://sites.google.com/uoc.edu/codecosmos');
+  };
 
-export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
+        <Image
+          source={{ uri: 'https://alejandroarevalorojas.com/assets/CodeCosmos.png' }}
+          style={localStyles.image}
+          resizeMode="contain"
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">explore.tsx</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+      <View style={localStyles.titleContainer}>
+        <Text style={localStyles.title}>Grupo CodeCosmos</Text>
+      </View>
 
+      <Text style={localStyles.description}>
+        Los miembros del grupo somos:
+      </Text>
+      <Text style={localStyles.paragraph}>
+        Sue Cajidos{'\n'}
+        Carlos Bravo{'\n'}
+        Camelia Ancuta Moticeac{'\n'}
+        Alejandro Arévalo{'\n'}
+        Liliana Díaz
+      </Text>
 
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+      <Text style={localStyles.description}>
+        En este link se pueden ver más detalles de nuestro trabajo:
+      </Text>
 
+      {/* Enlace funcional */}
+      <Text style={localStyles.link} onPress={handlePress}>
+        Link a Google Sites
+      </Text>
     </ParallaxScrollView>
   );
-}
+};
+
+export default TabTwoScreen;
+
+const localStyles = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 200,
+    marginVertical: 20,
+  },
+  titleContainer: {
+    marginVertical: 10,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  description: {
+    fontSize: 16,
+    color: '#333',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  paragraph: {
+    fontSize: 20,
+    color: '#000',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 10,
+  },
+  link: {
+    fontSize: 18,
+    color: 'blue',
+    textDecorationLine: 'underline',
+    textAlign: 'center',
+    marginVertical: 10,
+  },
+});
