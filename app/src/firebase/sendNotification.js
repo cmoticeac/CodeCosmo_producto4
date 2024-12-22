@@ -57,7 +57,7 @@ const notifyAllUsers = async () => {
       const jugadores = snapshot.val();
       Object.keys(jugadores).forEach((firestoreId) => {
         const jugador = jugadores[firestoreId];
-        const expoPushToken = jugador.firestoreId;
+        const expoPushToken = jugador.expoPushToken;
         if (expoPushToken) {
           console.log(`Enviando notificación a jugador ${firestoreId}`);
           sendPushNotification(
