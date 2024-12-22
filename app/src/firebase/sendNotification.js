@@ -56,18 +56,18 @@ const notifyAllUsers = async () => {
     if (snapshot.exists()) {
       console.log("Tokens encontrados en Firebase.");
       const jugadores = snapshot.val();
-      Object.keys(jugadores).forEach((userId) => {
-        const jugador = jugadores[userId];
+      Object.keys(jugadores).forEach((firestoreId) => {
+        const jugador = jugadores[firestoreId];
         const expoPushToken = jugador.expoPushToken;
         if (expoPushToken) {
-          console.log(`Enviando notificación a jugador ${userId}`);
+          console.log(`Enviando notificación a jugador ${firestoreId}`);
           sendPushNotification(
             expoPushToken,
             "Título de prueba",
             "¡Mensaje de prueba!"
           );
         } else {
-          console.log(`El jugador ${userId} no tiene token.`);
+          console.log(`El jugador ${firestoreId} no tiene token.`);
         }
       });
     } else {
