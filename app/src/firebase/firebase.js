@@ -13,11 +13,11 @@ const firebaseConfig = {
   measurementId: "G-70LBQTLNL1",
 };
 
-// Inicializar la app de Firebase
+
 const app = initializeApp(firebaseConfig);
 
-// Inicializar la base de datos de Firebase
+
 const database = getDatabase(app);
 
-// Exportar funciones necesarias para interactuar con la base de datos
+ 
 export { database, ref, set, get, child, onValue };

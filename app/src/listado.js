@@ -98,8 +98,6 @@ class Listado extends React.Component {
       <Text>Apellido: {item.apellido}</Text>
       <Text>Posición: {item.posicion}</Text>
       <Button title="Ver Detalles Jugador" onPress={() => this.handlePress(item)} />
-       <Text>{'\n'}</Text>
-      <Button title="Update "  />
     </View>
   );
 

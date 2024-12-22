@@ -13,13 +13,12 @@ const firebaseConfig = {
   measurementId: "G-70LBQTLNL1",
 };
 
-// Inicializar Firebase
 console.log("Inicializando Firebase...");
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 console.log("Firebase inicializado.");
 
-// Función para enviar notificaciones push
+
 const sendPushNotification = async (expoPushToken, title, body) => {
   console.log(`Enviando notificación a: ${expoPushToken}`);
   const message = {
@@ -50,7 +49,7 @@ const sendPushNotification = async (expoPushToken, title, body) => {
 const notifyAllUsers = async () => {
   console.log("Obteniendo tokens de Firebase...");
   try {
-    const tokensRef = ref(database, "jugadores"); // Cambia "jugadores" si la ruta es diferente
+    const tokensRef = ref(database, "jugadores");  
     const snapshot = await get(tokensRef);
 
     if (snapshot.exists()) {
@@ -78,6 +77,6 @@ const notifyAllUsers = async () => {
   }
 };
 
-// Ejecutar la función principal
+
 console.log("Iniciando envío de notificaciones...");
 notifyAllUsers();

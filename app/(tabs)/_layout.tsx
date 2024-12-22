@@ -51,19 +51,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="insertar"
-        options={{
-          title: 'Insertar',
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
-            <Ionicons
-              name={focused ? 'add-circle' : 'add-circle-outline'}
-              color={color}
-              size={24}
-            />
-          ),
-        }}
-      />
+      
       {/* Renderizamos las rutas internas de cada pestaña */}
       <Slot />
     </Tabs>
