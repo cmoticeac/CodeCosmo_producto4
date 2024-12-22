@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, View, Text,  Button, Image, ActivityIndicator } from 'react-native';
 import { database, ref, onValue } from './firebase/firebase.js'; // Aquí importamos ref y onValue
 import Detalle from './detalle'; // Asegúrate de importar el componente Detalle
-import Mensajes from '../src/firebase/mensajes.js';
+import Mensajes from './firebase/mensajes.js';
 import Mystyles from './mystyles.js';
 
 // Mensajes();  //mensajes token

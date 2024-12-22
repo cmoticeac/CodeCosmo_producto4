@@ -1,16 +1,22 @@
-import React, { useEffect } from "react";
-import guardarToken from "./firebase/mensajes";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Mensajes from "./firebase/mensajes"; // Ajusta la ruta según tu estructura
 
-const App = () => {
-  const firestoreId = "-OBrPAKR1fusdH59NKDg"; // Cambia por un firestoreId válido de Firebase
+export default function App() {
+  const firestoreId = "-OBrPAKR1fusdH59NKDg"; // Ajusta con un firestoreId válido
 
-  useEffect(() => {
-    if (firestoreId) {
-      guardarToken(firestoreId);
-    }
-  }, [firestoreId]);
+  return (
+    <View style={styles.container}>
+      <Mensajes firestoreId={firestoreId} />
+    </View>
+  );
+}
 
-  return <></>;
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+  },
+});
 
-export default App;
