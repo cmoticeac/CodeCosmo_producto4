@@ -1,7 +1,7 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get, child, onValue } from "firebase/database";
 
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBW2TZzcM7tAAiS2zsBGvev4sPBdYnTkrw",
   authDomain: "producto2-63d62.firebaseapp.com",
@@ -10,14 +10,14 @@ const firebaseConfig = {
   storageBucket: "producto2-63d62.firebasestorage.app",
   messagingSenderId: "549088204019",
   appId: "1:549088204019:web:65790dda1e88fda43b1386",
-  measurementId: "G-70LBQTLNL1"
+  measurementId: "G-70LBQTLNL1",
 };
- 
-// Inicializa Firebase
+
+// Inicializar la app de Firebase
 const app = initializeApp(firebaseConfig);
 
-// Inicializa Realtime Database
+// Inicializar la base de datos de Firebase
 const database = getDatabase(app);
-export { database, ref, set, get, child, onValue };
 
-//  export default firebaseConfig;
+// Exportar funciones necesarias para interactuar con la base de datos
+export { database, ref, set, get, child, onValue };
