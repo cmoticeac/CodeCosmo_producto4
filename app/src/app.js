@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { v4 as uuidv4 } from "uuid";
 import Mensajes from "./firebase/firebase";
+import listenForPlayerChanges from "./firebase/databaseListener"; // Importar el listener para la base de datos
 
 const App = () => {
   const [firestoreId, setFirestoreId] = React.useState(null);
@@ -20,15 +21,17 @@ const App = () => {
     };
 
     getOrCreateFirestoreId();
+
+    // Iniciar el listener para cambios en la base de datos
+    listenForPlayerChanges();
+
   }, []);
 
   if (!firestoreId) {
     return null; // Esperar a que se obtenga el ID
   }
 
-  return (
-    <Mensajes firestoreId={firestoreId} />
-  );
+  return <Mensajes firestoreId={firestoreId} />;
 };
 
 export default App;
