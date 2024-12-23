@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get } from "firebase/database";
+import {  getDatabase, ref, get , update } from "firebase/database";
+import { getToken } from "firebase/messaging";
 
-// Configuración de Firebase
+
 const firebaseConfig = {
   apiKey: "AIzaSyBW2TZzcM7tAAiS2zsBGvev4sPBdYnTkrw",
   authDomain: "producto2-63d62.firebaseapp.com",
@@ -21,15 +22,13 @@ console.log("Firebase inicializado.");
 
 const sendPushNotification = async (expoPushToken, title, body) => {
   console.log(`Enviando notificación a: ${expoPushToken}`);
-  const message = {
-    to: expoPushToken,
-    sound: "default",
-    title: title,
-    body: body,
-  };
+  const message = {    to: expoPushToken,    sound: "default",  title: title,   body: body,  };
 
-  try {
-    const response = await fetch("https://exp.host/--/api/v2/push/send", {
+
+   try {
+
+
+     const response = await fetch("https://exp.host/--/api/v2/push/send", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -45,33 +44,44 @@ const sendPushNotification = async (expoPushToken, title, body) => {
   }
 };
 
-// Función para obtener tokens de Firebase y enviar notificaciones
+
 const notifyAllUsers = async () => {
   console.log("Obteniendo tokens de Firebase...");
   try {
-    const tokensRef = ref(database, "jugadores");  
-    const snapshot = await get(tokensRef);
+    const snapshot = await get(ref(database, 'jugadores'));
 
     if (snapshot.exists()) {
       console.log("Tokens encontrados en Firebase.");
       const jugadores = snapshot.val();
-      Object.keys(jugadores).forEach((firestoreId) => {
-        const jugador = jugadores[firestoreId];
-        const expoPushToken = jugador.expoPushToken;
-        if (expoPushToken) {
-          console.log(`Enviando notificación a jugador ${firestoreId}`);
-          sendPushNotification(
-            expoPushToken,
-            "Título de prueba",
-            "¡Mensaje de prueba!"
-          );
-        } else {
-          console.log(`El jugador ${firestoreId} no tiene token.`);
-        }
-      });
+
+      for (const firestoreId of Object.keys(jugadores)) {
+              const jugador = jugadores[firestoreId];
+              const expoPushToken = jugador.expoPushToken;
+
+              if (expoPushToken) {
+                  console.log(`Enviando notificación a jugador ${firestoreId}`);
+                  await sendPushNotification(expoPushToken,"mensaje 1","mensaje 1_2");
+              } else {
+                  console.log(`El jugador ${firestoreId} no tiene token.`);
+                  const defaultToken = `token_generado_${firestoreId}`;
+
+                  try {
+
+                      await update(ref(database, `jugadores/${firestoreId}`), {
+                          expoPushToken: defaultToken,
+                      });
+                      console.log(`Se asignó un token por defecto al jugador ${firestoreId}`);
+                  } catch (error) {
+                      console.error(`Error al actualizar el token para ${firestoreId}:`, error);
+                  }
+              }
+          }
+
     } else {
-      console.log("No hay tokens registrados en Firebase.");
+          console.log("No hay tokens registrados en Firebase.");
     }
+
+
   } catch (error) {
     console.error("Error al obtener los tokens:", error);
   }

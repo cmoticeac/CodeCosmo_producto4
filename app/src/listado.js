@@ -102,24 +102,34 @@ class Listado extends React.Component {
   render() {
     const { selectedJugador, jugadores, loading } = this.state;
 
-    return (
-      <View style={Mystyles.container}>
-        <Text style={Mystyles.title}>Lista de Jugadores</Text>
+    if (this.state.loading){
+    return(
+            <View style ={Mystyles.contenedor}>
+                <Text>Cargando</Text>
+            </View>
 
-        {selectedJugador ? (
-          <Detalle jugador={selectedJugador} onBack={() => this.setState({ selectedJugador: null })} />
-        ) : (
-          <FlatList
-            data={jugadores}
-            renderItem={this.renderItem}
-            keyExtractor={(item) => item.id}  
-            onEndReached={this.handleEndReached}  
-            onEndReachedThreshold={0.1}  
-            ListFooterComponent={loading ? <ActivityIndicator size="large" color="#0000ff" /> : null} // Mostrar cargando
-          />
-        )}
-      </View>
-    );
+    )
+    }
+    else {
+        return (
+          <View style={Mystyles.container}>
+            <Text style={Mystyles.title}>Lista de Jugadores</Text>
+
+            {selectedJugador ? (
+              <Detalle jugador={selectedJugador} onBack={() => this.setState({ selectedJugador: null })} />
+            ) : (
+              <FlatList
+                data={jugadores}
+                renderItem={this.renderItem}
+                keyExtractor={(item) => item.id}
+                onEndReached={this.handleEndReached}
+                onEndReachedThreshold={0.1}
+                ListFooterComponent={loading ? <ActivityIndicator size="large" color="#0000ff" /> : null} // Mostrar cargando
+              />
+            )}
+          </View>
+        );
+      }
   }
 }
 
