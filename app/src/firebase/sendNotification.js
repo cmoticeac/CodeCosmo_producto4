@@ -24,24 +24,6 @@ const sendPushNotification = async (expoPushToken, title, body) => {
   console.log(`Enviando notificación a: ${expoPushToken}`);
   const message = {    to: expoPushToken,    sound: "default",  title: title,   body: body,  };
 
-
-   try {
-
-
-     const response = await fetch("https://exp.host/--/api/v2/push/send", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(message),
-    });
-
-    const data = await response.json();
-    console.log("Respuesta de Expo:", data);
-  } catch (error) {
-    console.error("Error al enviar la notificación:", error);
-  }
 };
 
 
